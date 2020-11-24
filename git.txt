@@ -1,0 +1,94 @@
+git init
+git clone https://git.renater.fr/anonscm/git/nom_projet/nom_projet.git
+
+git push
+
+git pull
+
+---------
+GITIGNORE
+---------
+Pour ignorer un fichier dans Git, il faut créer un fichier “.gitignore” à la racine du dossier projet et indiquer les nom des fichiers à ignorer.
+Les fichiers contenus dans “.gitignore” ne seront pas pris en compte dans les commits.
+
+------
+REMOTE
+------
+Créer dépôt distant / Créer liaison avec le dépôt distant
+> git remote add depot_distant git@github.com:utilisateur/depot_utilisateur.git 
+Modifier l'URL du dépôt distant
+> git remote set-url depot_distant git@github.com:utilisateur2/depot_utilisateur2.git
+
+----
+ADD
+----
+Pour ajouter l'ensemble des fichiers à la liste des fichiers à commiter :
+> git add .
+sinon :
+> git add nom_fichier
+
+
+------
+STATUS
+------
+Pour lister tous les fichiers modifiés :
+> git status
+Pour voir ce qui a effectivement changé depuis le dernier commit :
+> git diff
+
+
+-------
+COMMIT
+-------
+git commit -m "commentaire
+Pour modifier le dernier message du commit :
+> git commit --amend
+Pour annuler tous les changements du dernier commit :
+> git reset --hard HEAD^
+Pour restaurer un fichier dans l'état du dernier commit :
+> git checkout nomfichier
+
+
+------
+BRANCH
+------
+Une branche se crée grâce à la commande git checkout en spécifiant l'option -b puis le nom de la branche :
+> git checkout -b ma_branche_de_developpement
+Pour intégrer la branche au repository distant, il faut utiliser la commande git push. L'option -u indique à git de créer toutes les informations nécessaires pour rendre la branche traçable. Il faut ensuite spécifier le nom du repository distant (par défaut, il se nomme origin) et le nom de la branche.
+> git push -u repository_distant ma_branche_de_developpement
+
+Lister les branches locales :
+> git branch
+Créer une branche :
+> git branch nom_nouvelle_branche
+Changer de branche locale et se positionner sur nom_branche :
+> git checkout nom_branche
+Fusionner des branches :
+Se positionner sur la branche dans laquelle va avoir lieu la fusion, dans l'exemple ci-dessous “master” et fusionner le contenu avec la branche souhaitée :
+> git checkout master
+> git merge nom_branche_a_fusionner
+Supprimer une branche et tous ses changements même non fusionnés :
+> git branch -D nom_branche_a_supprimer
+
+----
+TAG
+----
+Pour ajouter un tag sur un commit :
+> git tag nom_tag id_commit
+Pour supprimer un tag :
+> git tag -d nom_tag_a_supprimer
+
+
+------
+LOG
+----
+Plus de détails
+> git log -p
+
+
+---
+RM
+---
+Pour supprimer un fichier d'un dépôt (sans le supprimer complètement de l'historique Git), utilisez la commande git rm (ensuite il faut commiter cette suppression puis la pousser sur le serveur Git) :
+> git rm monfichier.ext
+
